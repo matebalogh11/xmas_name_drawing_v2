@@ -1,4 +1,5 @@
 import psycopg2
+from champagne_xmas import bcrypt
 
 DB = "champagne"
 HOST = "localhost"
@@ -6,15 +7,22 @@ USER = "postgres"
 PW = "3dc41885"
 DNS = "dbname='{}' user='{}' host='{}' password='{}'".format(DB, USER, HOST, PW)
 
+def load_user(username, password):
+    sql_query = "SELECT password FROM users WHERE username = %s;"
+    data = (username,)
+    result = execute_sql(sql_query, data)
+    if result:
+        pw_hash = result[0][0].encode('utf-8')
+        return bcrypt.check_password_hash(pw_hash, password)
+    return False   
 
 def build_insert(username, password):
     if check_existing_name(username):
         return False
-        
     sql_query = "INSERT INTO users VALUES (DEFAULT, %s, %s);"
-    print(sql_query)
     data = (username, password)
     execute_sql(sql_query, data)
+    return True
 
 def check_existing_name(username):
     sql_query = "SELECT username FROM users WHERE username = %s"
@@ -24,7 +32,10 @@ def check_existing_name(username):
 
 def get_users():
     sql_query = "SELECT username FROM users;"
-    return execute_sql(sql_query)
+    result = execute_sql(sql_query)
+    if result:
+        return [i[0] for i in result]
+    return None
 
 def execute_sql(query, data = None):
     conn = None
