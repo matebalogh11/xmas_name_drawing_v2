@@ -1,12 +1,27 @@
 from flask import render_template, url_for, flash, redirect, session
 from champagne_xmas.forms import RegistrationForm, LoginForm
-from champagne_xmas.db import build_insert, load_user
-from champagne_xmas import app
+from champagne_xmas.db import build_insert, load_user, get_users, all_users_here, get_pair, get_existing_pair
+from champagne_xmas import app, bcrypt
 
 @app.route("/")
-@app.route("/home")
-def home():
-    return render_template('home.html', title='Home', user=session['user'] if 'user' in session else None)
+def to_home():
+    return redirect(url_for('home'))
+
+@app.route("/home", defaults={'name' : None})
+@app.route("/home/<name>")
+def home(name):
+    users = None
+    user = None
+    ready = None
+    pair = None
+    if 'user' in session:
+        users = get_users()
+        user = session['user']
+        ready = all_users_here()
+        pair = get_existing_pair(user)
+        if name:
+            pair = get_pair(user)
+    return render_template('home.html', title='Home', user=user, users=users, ready=ready, pair=pair)
 
 
 @app.route("/regisztracio", methods=['GET', 'POST'])

@@ -2,7 +2,63 @@
 {% block content %}
     {% if user %}
         <h1>Bent is vagy az oldalon {{ user }}</h1>
+        <p>Az eddig regeltek listálja:</p>
+        <ul>
+            {% for u in users %}
+            <li>{{ u }}</li>
+            {% endfor %}
+        </ul>
+        {% if ready %}
+            {% if pair %}
+                <h1>A párod nem más mint: {{ pair }}</h1>
+            {% else %}
+                <p>Mehet a menet!</p>
+                <a class="btn btn-primary" href="{{url_for('home', name='rdy')}}">MEHET</a>
+            {% endif %}
+        {% else %}
+            <p>Még nincs itt mindenki:(</p>
+        {% endif %}
     {% else %}
-        <h1>Main Page</h1>
+        <div class="row">
+            <div class="col-md">
+                <div class="pressie">
+                    <div class="cover"></div>
+                    <div class="wrap"> </div>
+                    <div class="ribbon"></div>
+                </div>
+                <div class="tree">
+                    <div class="base"> </div>
+                    <div class="layer">
+                        <div class="line"> </div>
+                        <div class="bauble one"></div>
+                    </div>
+                    <div class="layer two">
+                            <div class="line two"> </div>
+                            <div class="bauble two"></div>
+                            <div class="socks"> 
+                            <div class="top"> </div>
+                            <div class="foot"></div></div>
+                    </div>
+                    <div class="layer three">
+                        <div class="line three"> </div>
+                        <div class="bauble three"></div>
+                        <div class="socks two">
+                            <div class="top"> </div>
+                            <div class="foot two"></div>
+                        </div>
+                    </div>
+                    <div class="layer four">
+                            <div class="bauble four"></div>
+                            <div class="star two"></div>
+                            <div class="line four"> </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <h1>Helloka</h1>
+                <p>Itt lesz valami vicces szöveg</p>
+                <p>Csak még nem tudom mi</p>
+            </div>
+        </div>
     {% endif %}
 {% endblock %}
