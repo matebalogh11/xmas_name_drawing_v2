@@ -589,7 +589,19 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color:lightsteelblue;
-    color: black;
+    background-color:#5f788a;
+    color: white;
     text-align: center;
+    vertical-align: auto;
+    font-size: 100%;
+ }
+
+ .nameli {
+   font-size: 130%;
+ }
+
+ .nevpar {
+   font-family: cursive;
+   font-weight: bold;
+   color: red;
  }
