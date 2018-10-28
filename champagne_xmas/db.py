@@ -11,7 +11,7 @@ DNS = "dbname='{}' user='{}' host='{}' password='{}'".format(DB, USER, HOST, PW)
 def all_users_here():
     sql_query = "SELECT COUNT(*) FROM users;"
     result = execute_sql(sql_query)
-    return result[0][0] == 4 #number of ppl coming 
+    return result[0][0] == 8 #number of ppl coming 
 
 def get_existing_pair(username):
     sql_query = "SELECT pair FROM users WHERE username = %s;"

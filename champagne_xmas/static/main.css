@@ -4,6 +4,9 @@ body {
     background-repeat: repeat;
     color: #333333;
     margin-top: 5rem;
+    min-height: 400px;
+    margin-bottom: 100px;
+    clear: both;
   }
   
   
@@ -16,7 +19,7 @@ body {
   }
 
   .bg-red {
-    background-color: #FC719B;
+    background-color: #ff7878;
   }
   
   .site-header .navbar-nav .nav-link {
@@ -589,11 +592,10 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color:#5f788a;
-    color: white;
     text-align: center;
     vertical-align: auto;
     font-size: 100%;
+    color: white;
  }
 
  .nameli {
@@ -605,3 +607,33 @@ body {
    font-weight: bold;
    color: red;
  }
+
+ a{
+  color: #74d680;
+  font-size: 110%;
+  font-weight: bold;
+  }
+
+  #green {
+    color: 	#74d680
+  }
+
+  a:hover { 
+    color: #ff0000;
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#red  {
+  color: #ff0000
+}
+
+#check {
+  color: white;
+}
+
+#asd {
+  font-family: cursive;
+}
+

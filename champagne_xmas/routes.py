@@ -19,7 +19,7 @@ def home(name):
         user = session['user']
         ready = all_users_here()
         pair = get_existing_pair(user)
-        if name:
+        if name and ready and not pair:
             pair = get_pair(user)
     return render_template('home.html', title='Home', user=user, users=users, ready=ready, pair=pair)
 

@@ -1,28 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
     {% if user %}
-        <h3>Bent is vagy az oldalon {{ user }} :)</h3>
-        <h4>Az eddig regisztrált krampuszok listálja:</h4>
-        <div class="container">
-            <ul>
-                {% for u in users %}
-                <li class="nameli">{{ u }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% if ready %}
-            {% if pair %}
-                <img src="{{url_for('static', filename='spongebob.jpg')}}">
-                <h3>A párod nem más mint:</h3>
-                <h1 class="nevpar">{{ pair }}</h1>
+            <h3>Bent is vagy az oldalon {{ user }} :)</h3>
+            <h4>Az eddig regisztrált krampuszok listálja:</h4>
+            <div class="container">
+                <ul>
+                    {% for u in users %}
+                    <li class="nameli">{{ u }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if ready %}
+                {% if pair %}
+                    <h3>A párod nem más mint:</h3>
+                    <h1 class="nevpar">{{ pair }}</h1>
+                    <img src="{{url_for('static', filename='spongebob.jpg')}}">
+                {% else %}
+                    <h4>Mehet a menet!</h4>
+                    <a class="btn btn-danger" href="{{url_for('home', name='rdy')}}">Húzok</a>
+                {% endif %}
             {% else %}
-                <p>Mehet a menet!</p>
-                <a class="btn btn-primary" href="{{url_for('home', name='rdy')}}">MEHET</a>
+                <h4>Még nincs itt mindenki:(</h4>
+                <img src="{{url_for('static', filename='spongesad.jpg')}}">
             {% endif %}
-        {% else %}
-            <img src="{{url_for('static', filename='spongesad.jpg')}}">
-            <h4>Még nincs itt mindenki:(</h4>
-        {% endif %}
     {% else %}
         <div class="row">
             <div class="col-md">
@@ -59,10 +59,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md">
-                <h1>Helloka</h1>
-                <p>Itt lesz valami vicces szöveg</p>
-                <p>Csak még nem tudom mi</p>
+            <div class="col-md-8">
+                <h3 id="asd">Üdvözöllek a névhúzás fellegvárában!</h3><br/>
+                <h6 id="asd">Ha szándékosan érkeztél ugorj el regisztrálni és ne feledd a megkapott VIP kódot!</h6>
+                <h6 id="asd">Ha nem tudod mi ez a hely simizd meg a fát, és távozz.</h6><br/>
+                <img src="{{url_for('static', filename='socks.png')}}" style="width:80%">
             </div>
         </div>
     {% endif %}

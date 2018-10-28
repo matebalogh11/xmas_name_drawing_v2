@@ -18,9 +18,9 @@
     </head>
     <body>
         <header class="site-header">
-            <nav class="navbar navbar-expand-md navbar-light bg-steel fixed-top">
+            <nav class="navbar navbar-expand-md navbar-light bg-red fixed-top">
                 <div class="container">
-                    <a class="navbar-brand mr-4" href="/">Champagne xmas</a>
+                    <a class="navbar-brand mr-4" id="check" href="/">Champagne xmas</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -48,8 +48,8 @@
                                 <a class="nav-item nav-link" href="#">{{ user }}</a>
                                 <a class="nav-item nav-link" href="{{ url_for('logout') }}">Kijelentkezés</a>
                             {% else %}
-                                <a class="nav-item nav-link" href="{{ url_for('login') }}">Bejelentkezés</a>
-                                <a class="nav-item nav-link" href="{{ url_for('register') }}">Regisztráció</a>
+                                <a class="nav-item nav-link" id="bg-green" href="{{ url_for('login') }}">Bejelentkezés</a>
+                                <a class="nav-item nav-link" id="bg-green" href="{{ url_for('register') }}">Regisztráció</a>
                             {% endif %}
                         </div>
                     </div>
@@ -70,18 +70,18 @@
                 </div>
                 <div class="col-md-4">
                     <div class="content-section">
-                        <h3>Kapcsolódó infók</h3>
+                        <h3 id="green">Kapcsolódó infók</h3>
                         <p class='text-muted'>Minden ami zokni.
                             <ul class="list-group">
                                 <li class="list-group-item list-group-item-light" id="date"></li>
                                 <li class="list-group-item list-group-item-light">
-                                    <a class="navlink" rel="noopener noreferrer" href="https://www.facebook.com/events/2160017130953837/" target="_blank">Esemény fb link</a>
+                                    <a class="navlink" id="bg-green" rel="noopener noreferrer" href="https://www.facebook.com/events/2160017130953837/" target="_blank">Esemény fb link</a>
                                 </li>
                                 <li class="list-group-item list-group-item-light navlink">
-                                    <a rel="noopener noreferrer" href="https://www.youtube.com/watch?v=kB4YG8LSiQo" target="_blank">Csinálj ronda zoknit te magad!</a>
+                                    <a id="bg-green" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=kB4YG8LSiQo" target="_blank">Csinálj ronda zoknit te magad!</a>
                                 </li>
                                 <li class="list-group-item list-group-item-light navlink">
-                                    <a rel="noopener noreferrer" href="https://www.youtube.com/watch?v=dhN1loL1cvU" target="_blank">Unatkozok</a>
+                                    <a id="bg-green" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=dhN1loL1cvU" target="_blank">Unatkozok</a>
                                 </li>
                             </ul>
                         </p>
@@ -90,8 +90,8 @@
             </div>
         </main>
         
-        <div class="footer">
-            <h3>Névhúzós móka</h3>
+        <div class="footer bg-red">
+            <h3 id="check">Névhúzós móka</h3>
             <p>Champagne xmas v2</p>
         </div>
         <!-- Optional JavaScript -->
