@@ -1,18 +1,9 @@
-import os
 import psycopg2
-import urllib.parse as urlparse
+import urllib
+import os
 from champagne_xmas import bcrypt
 from random import randrange
 
-
-url = urlparse.urlparse(os.environ['DATABASE_URL'])
-connection = psycopg2.connect(
-    database=url.path[1:],
-    user=url.username,
-    password=url.password,
-    host=url.hostname,
-    port=url.port
-)
 
 def all_users_here():
     sql_query = "SELECT COUNT(*) FROM users;"
@@ -92,9 +83,17 @@ def get_users():
 def execute_sql(query, data = None):
     conn = None
     try:
-        conn = connection
+        urllib.parse.uses_netloc.append('postgres')
+        url = urllib.parse.urlparse(os.environ.get('DATABASE_URL'))
+        conn = psycopg2.connect(
+            database=url.path[1:],
+            user=url.username,
+            password=url.password,
+            host=url.hostname,
+            port=url.port
+        )
     except psycopg2.OperationalError as error:
-        print("Execute query failed: " + error)
+        print("Execute query failed ajjaj: " + error)
     else:
         conn.autocommit = True
         with conn.cursor() as cursor:
