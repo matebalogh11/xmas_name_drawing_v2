@@ -17,5 +17,4 @@ class RegistrationForm(FlaskForm):
 class LoginForm(FlaskForm):
     username = StringField('Felhasználónév', validators=[DataRequired()])
     password = PasswordField('Jelszó', validators=[DataRequired()])
-    remember = BooleanField('Emlékezz rám')
     submit = SubmitField('Belépés')

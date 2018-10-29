@@ -1,17 +1,24 @@
 import psycopg2
 from champagne_xmas import bcrypt
 from random import randrange
+import os
+import psycopg2
+import urllib
 
-DB = "champagne"
-HOST = "localhost"
-USER = "postgres"
-PW = "3dc41885"
-DNS = "dbname='{}' user='{}' host='{}' password='{}'".format(DB, USER, HOST, PW)
+urllib.parse.uses_netloc.append('postgres')
+url = urllib.parse.urlparse(os.environ.get('DATABASE_URL'))
+connection = psycopg2.connect(
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port
+)
 
 def all_users_here():
     sql_query = "SELECT COUNT(*) FROM users;"
     result = execute_sql(sql_query)
-    return result[0][0] == 8 #number of ppl coming 
+    return result[0][0] == 9 #number of ppl coming 
 
 def get_existing_pair(username):
     sql_query = "SELECT pair FROM users WHERE username = %s;"
@@ -86,7 +93,7 @@ def get_users():
 def execute_sql(query, data = None):
     conn = None
     try:
-        conn = psycopg2.connect(DNS)
+        conn = connection
     except psycopg2.OperationalError as error:
         print("Execute query failed: " + error)
     else:
