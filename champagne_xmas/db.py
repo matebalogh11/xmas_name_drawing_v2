@@ -1,12 +1,11 @@
-import psycopg2
-from champagne_xmas import bcrypt
-from random import randrange
 import os
 import psycopg2
-import urllib
+import urllib.parse as urlparse
+from champagne_xmas import bcrypt
+from random import randrange
 
-urllib.parse.uses_netloc.append('postgres')
-url = urllib.parse.urlparse(os.environ.get('DATABASE_URL'))
+
+url = urlparse.urlparse(os.environ['DATABASE_URL'])
 connection = psycopg2.connect(
     database=url.path[1:],
     user=url.username,
