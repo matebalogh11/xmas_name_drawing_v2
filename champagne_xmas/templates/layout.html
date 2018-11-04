@@ -20,7 +20,7 @@
         <header class="site-header">
             <nav class="navbar navbar-expand-md navbar-light bg-red fixed-top">
                 <div class="container">
-                    <a class="navbar-brand mr-4" id="check" href="/">Champagne xmas</a>
+                    <a class="nav-link nav-item" id="check">Champagne xmas</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -50,6 +50,7 @@
                             {% else %}
                                 <a class="nav-item nav-link" id="bg-green" href="{{ url_for('login') }}">Bejelentkezés</a>
                                 <a class="nav-item nav-link" id="bg-green" href="{{ url_for('register') }}">Regisztráció</a>
+                                <a class="nav-item nav-link" id="bg-green" href="{{ url_for('create_room') }}">Szoba készítés</a>
                             {% endif %}
                         </div>
                     </div>
@@ -71,7 +72,7 @@
                 <div class="col-md-4">
                     <div class="content-section">
                         <h3 id="green">Kapcsolódó infók</h3>
-                        <p class='text-muted'>Minden ami zokni.
+                        <p class='text-muted'>{{ roomname }}
                             <ul class="list-group">
                                 <li class="list-group-item list-group-item-light" id="date"></li>
                                 <li class="list-group-item list-group-item-light">

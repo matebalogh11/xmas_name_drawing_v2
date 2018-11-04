@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend id="green" style="font-size:180%;font-weight:bold" class="mb-4">Szoba készítés</legend>
+            <div class="form-group" style="font-size:110%">
+                {{ form.roomname.label(class="form-control-label") }}
+                {% if form.roomname.errors %}
+                {{ form.roomname(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.roomname.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form.roomname(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group" style="font-size:110%">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group" style="font-size:110%">
+                {{ form.letszam.label(class="form-control-label") }}
+                {% if form.letszam.errors %}
+                {{ form.letszam(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.letszam.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form.letszam(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group" style="font-size:110%">
+                {{ form.vipcode.label(class="form-control-label") }}
+                {% if form.vipcode.errors %}
+                {{ form.vipcode(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.vipcode.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form.vipcode(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-success") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
